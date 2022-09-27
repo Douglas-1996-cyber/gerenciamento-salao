@@ -1,0 +1,36 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+           <div class="card">
+                <div class="card-header"> Lista de Agendados </div>    
+                <div class="card-body">
+                 <?php date_default_timezone_set('America/Sao_Paulo'); ?>
+                     <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Hora</th>
+                            </tr>
+                        </thead>
+                        @foreach ($marcacoes as $marcacao )
+                        <tbody>
+
+                            <tr>
+                            <th scope="row">{{$marcacao->nome}}</th>
+                            <td>{{date('d/m/Y', strtotime($marcacao->dt_marcacao))}}</td>
+                            <td>{{ $marcacao->hora}}</td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                        </table>
+                </div>
+                  
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
