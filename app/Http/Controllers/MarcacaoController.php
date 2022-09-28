@@ -44,7 +44,12 @@ class MarcacaoController extends Controller
     public function store(Request $request)
     {
         $user_id = auth()->user()->id;
-        $marcacao = $this->marcacao->create($request->all());
+        $this->marcacao->user_id = $user_id;
+        $this->marcacao->nome = $request->nome;
+        $this->marcacao->dt_marcacao = $request->dt_marcacao;
+        $this->marcacao->hora = $request->hora;
+
+        $marcacao = $this->marcacao->save();
         
         $marcacoes = $this->marcacao->where('user_id',$user_id)->get();
         return redirect()->route('marcacao.index',['marcacoes'=>$marcacoes]);
@@ -58,9 +63,7 @@ class MarcacaoController extends Controller
      */
     public function show(Marcacao $marcacao)
     {
-    if(strtotime($marcacao->dt_marcacao) < strtotime(today())){
-            return 'teste';
-        }
+
       
     }
 
@@ -72,7 +75,7 @@ class MarcacaoController extends Controller
      */
     public function edit(Marcacao $marcacao)
     {
-        //
+        return view('marcacao.edit',['marcacao'=>$marcacao]);
     }
 
     /**
@@ -84,7 +87,15 @@ class MarcacaoController extends Controller
      */
     public function update(Request $request, Marcacao $marcacao)
     {
-        //
+        $user_id = auth()->user()->id;
+        $marcacoes = $marcacao->where('user_id',$user_id)->get();
+        if($marcacao == null){
+            return redirect()->route('marcacao.index',['marcacoes'=>$marcacoes]);
+           }
+        $marcacao->fill($request->all());
+        $marcacao->save();
+     
+        return redirect()->route('marcacao.index',['marcacoes'=>$marcacoes]);
     }
 
     /**
@@ -95,7 +106,7 @@ class MarcacaoController extends Controller
      */
     public function destroy(Marcacao $marcacao)
     {
-        dd(date('Y'));
+        
     }
     public function autoDelete($user_id){
 

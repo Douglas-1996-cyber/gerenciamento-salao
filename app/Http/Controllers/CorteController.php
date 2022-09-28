@@ -92,10 +92,13 @@ class CorteController extends Controller
     public function update(Request $request, Corte $corte)
     {
         $user_id = auth()->user()->id;
-        
+        $cortes = $corte->where('user_id',$user_id)->get();
+        if($corte == null){
+            return redirect()->route('corte.index',['cortes'=>$cortes]);
+           }
         $corte->fill($request->all());
         $corte->save();
-        $cortes = $corte->where('user_id',$user_id)->get();
+     
         return redirect()->route('corte.index',['cortes'=>$cortes]);
     }
 

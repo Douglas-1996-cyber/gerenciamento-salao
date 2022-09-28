@@ -10,7 +10,7 @@
                <form method="post" action="{{route('corte.update',['corte'=>$corte->id])}}">
                       @csrf
                       @method('PUT')
-                      <input type="hidden" class="form-control" name="user_id" value="{{auth()->user()->id}}">
+                 
                             <div class="form-group">
                                 <label for="tipo">Tipo de corte</label>
                                 <input name="tipo" type="text" class="form-control" id="tipo" value="{{$corte->tipo}}" required>

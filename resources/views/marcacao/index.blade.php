@@ -14,6 +14,7 @@
                             <th scope="col">Nome</th>
                             <th scope="col">Data</th>
                             <th scope="col">Hora</th>
+                            <th></th>
                             </tr>
                         </thead>
                         @foreach ($marcacoes as $marcacao )
@@ -23,6 +24,7 @@
                             <th scope="row">{{$marcacao->nome}}</th>
                             <td>{{date('d/m/Y', strtotime($marcacao->dt_marcacao))}}</td>
                             <td>{{ $marcacao->hora}}</td>
+                            <td><a class="btn btn-outline-primary" href="{{route('marcacao.edit',$marcacao->id)}}">Alterar</a></td>
                             </tr>
                         </tbody>
                         @endforeach
