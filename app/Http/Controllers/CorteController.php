@@ -42,10 +42,14 @@ class CorteController extends Controller
     public function store(Request $request)
     {
         $user_id = auth()->user()->id;
+       
         $idCorte = $this->corte->where('tipo',$request->tipo)->where('user_id',$user_id)->value('id');
         $query = $this->corte->find($idCorte);
         if($query == null){
-            $corte = $this->corte->create($request->all());
+            $this->corte->tipo = $request->tipo;
+            $this->corte->user_id = $user_id;
+            $this->corte->valor = $request->valor;
+            $corte = $this->corte->save();
             $cortes = $this->corte->where('user_id',$user_id)->get();
            return redirect()->route('corte.index',['cortes'=>$cortes]);
         }else{
@@ -87,9 +91,10 @@ class CorteController extends Controller
      */
     public function update(Request $request, Corte $corte)
     {
+        $user_id = auth()->user()->id;
+        
         $corte->fill($request->all());
         $corte->save();
-        $user_id = auth()->user()->id;
         $cortes = $corte->where('user_id',$user_id)->get();
         return redirect()->route('corte.index',['cortes'=>$cortes]);
     }
@@ -102,9 +107,12 @@ class CorteController extends Controller
      */
     public function destroy(Corte $corte)
     {
+        $user_id = auth()->user()->id;
+        $cortes = $this->corte->where('user_id',$user_id)->get();
+       if($corte == null){
+        return redirect()->route('corte.index',['cortes'=>$cortes]);
+       }
        $corte->delete();
-       $user_id = auth()->user()->id;
-       $cortes = $this->corte->where('user_id',$user_id)->get();
        return redirect()->route('corte.index',['cortes'=>$cortes]);
     }
 }

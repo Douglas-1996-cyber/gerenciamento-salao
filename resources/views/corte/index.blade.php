@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-10">
            <div class="card">
                 <div class="card-header">Lista de cortes </div>
         
                 <div class="card-body">
-                     <table class="table table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                             <th scope="col">Tipo</th>
@@ -19,10 +19,10 @@
                         @foreach ($cortes as $corte )
                         <tbody>
                         
-                         <form id="form_{{ $corte->id}}" method="post" action=" {{ route('corte.destroy', ['corte' => $corte->id])}}">
-                                    @method('DELETE')
-                                    @csrf
-                        </form>
+                            <form id="form_{{ $corte->id}}" method="post" action=" {{ route('corte.destroy', ['corte' => $corte->id])}}">
+                                        @method('DELETE')
+                                        @csrf
+                            </form>
                             <tr>
                             <td>{{$corte->tipo}}</td>
                             <td>R${{$corte->valor}}</td>
@@ -49,10 +49,10 @@
                                     </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                         </tbody>
                         @endforeach
-                        </table>
+                    </table>
                 </div>
          
          

@@ -3,28 +3,28 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-15">
            <div class="card">
-                <div class="card-header ">Lista de serviços</div>
+                <div class="card-header">Lista de serviços</div>
         
-                <div class="card-body">
+                    <div class="card-body">
                      <table class="table table-hover">
                         <thead>
                             <tr>
                             <th scope="col">Tipo de corte</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Quantidade</th>
-                            <th scope="col">Valor total</th>
+                            <th scope="col">Total</th>
                             <th scope="col">Mês/Ano</th>
-                             <th scope="col"></th>
+                            <th></th>
                             </tr>
                         </thead>
-                        @foreach ($servicos as $servico )
+                         @foreach ($servicos as $servico )
                         <tbody>
+                       
                          <form id="form_delete{{ $servico->id}}" method="post" action=" {{ route('servico.destroy', ['servico' => $servico->id])}}">
                                     @method('DELETE')
                                     @csrf
-                                    
                         </form>
                             <tr>
                             <th scope="row">{{$servico->tipo_corte}}</th>
@@ -33,14 +33,10 @@
                             <td>R${{$servico->valor_total}}</td>
                             <td>{{$servico->ref_mes}}/{{$servico->ref_ano}}</td>
                             <td>
-                            
-                            <button class="btn btn-outline-success"   data-toggle="modal" data-target="#addQtdModalID{{$servico->id}}" {{$servico->fechado == 1 ? 'disabled' : '' }}>Add Quantidade</button>
+                            <button class="btn btn-outline-success"   data-toggle="modal" data-target="#addQtdModalID{{$servico->id}}" {{$servico->fechado == 1 ? 'disabled' : '' }}>Adicionar</button>
                             <button  class="btn btn-outline-danger"  data-toggle="modal" data-target="#excluirModalID{{$servico->id}}" {{$servico->fechado == 1 ? 'disabled' : '' }}>Excluir</button>
-                        
                             </td>
                             </tr>
-
-
 
                             <div class="modal fade" id="excluirModalID{{$servico->id}}" tabindex="-1" role="dialog" aria-labelledby="excluirModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -60,7 +56,7 @@
                                     </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
                                 
                             <div class="modal fade" id="addQtdModalID{{$servico->id}}" tabindex="-1" role="dialog" aria-labelledby="addQtdModalLabel" aria-hidden="true">
                                
@@ -72,7 +68,7 @@
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
+                                <div class="modal-body">
                                      <form method="post" id="form_adicionar{{ $servico->id}}" action="{{route('servico.adicionar',['servico'=>$servico->id])}}">
                                             @csrf
                                             @method('PATCH')
@@ -94,16 +90,13 @@
                                   </div>
                                </div>
                             </div>
-
-                             
-
+                         
                         </tbody>
-                        @endforeach
+                         @endforeach
                         </table>
+                    </div>
+
                 </div>
-         
-         
-                   
             </div>
         </div>
     </div>

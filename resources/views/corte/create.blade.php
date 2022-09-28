@@ -9,7 +9,6 @@
                 <div class="card-body">
                  <form method="post" action="{{route('corte.store')}}">
                         @csrf
-                      <input type="hidden" class="form-control" name="user_id" value="{{auth()->user()->id}}">
                        @if($msg != '') 
                             <div class="col-md-8 alert alert-danger" role="alert">
                                 {{$msg}}
