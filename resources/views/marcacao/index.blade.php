@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-lg-10">
            <div class="card">
                 <div class="card-header"> Lista de Agendados </div>    
                 <div class="card-body">
                  <?php date_default_timezone_set('America/Sao_Paulo'); ?>
-                     <table class="table table-hover">
+                     <table class="table table-hover table-responsive-md">
                         <thead>
                             <tr>
                             <th scope="col">Nome</th>
