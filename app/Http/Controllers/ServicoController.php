@@ -22,7 +22,7 @@ class ServicoController extends Controller
     {
       
         $user_id = auth()->user()->id;
-        $servicos = $this->servico->where('user_id',$user_id)->get();
+        $servicos = $this->servico->where('user_id',$user_id)->orderBy('created_at','desc')->get();
         return view('servico.index',['servicos'=>$servicos]);
     }
 
