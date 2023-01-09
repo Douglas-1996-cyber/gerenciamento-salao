@@ -20,10 +20,10 @@ class ServicoController extends Controller
      */
     public function index()
     {
-      
+        $mes = $this->mes();
         $user_id = auth()->user()->id;
         $servicos = $this->servico->where('user_id',$user_id)->orderBy('created_at','desc')->get();
-        return view('servico.index',['servicos'=>$servicos]);
+        return view('servico.index', ['servicos'=>$servicos,'invalid'=>'', 'mes'=>$mes]);
     }
 
     /**
@@ -238,5 +238,34 @@ class ServicoController extends Controller
        return $lucro->id;
 
     }
+    public function pesquisar(Request $request){
+        $user_id = auth()->user()->id;
+        $invalid = "Nenhum resultado encontrado";
+        $mes = $this->mes();
+        if($request->ano == null && $request->mes == 'Mês'){
+            return $this->index();
+        }else if($request->ano == null){
+            $servicos = Servico::where('ref_mes',(int)$request->mes)->where('user_id', $user_id)->get();
+            if(sizeof($servicos) == 0){
+                return view('servico.index', ['servicos'=>$servicos,'invalid'=> $invalid, 'mes'=>$mes]);
+            }else{
+                return view('servico.index', ['servicos'=>$servicos,'invalid'=>'', 'mes'=>$mes]);
+            }
+        }else if($request->mes == 'Mês'){
+        $servicos = Servico::where('ref_ano', $request->ano)->where('user_id', $user_id)->get();
+        if(sizeof($servicos) == 0){
+            return view('servico.index', ['servicos'=>$servicos,'invalid'=>$invalid, 'mes'=>$mes]);
+        }else{
+            return view('servico.index', ['servicos'=>$servicos,'invalid'=>'', 'mes'=>$mes]);
+    }
 
+    }else{
+        $servicos = Servico::where('ref_ano', $request->ano)->where('ref_mes', (int)$request->mes)->where('user_id', $user_id)->get();
+        if(sizeof($servicos) == 0){
+            return view('servico.index', ['servicos'=>$servicos,'invalid'=>$invalid, 'mes'=>$mes]);
+        }else{
+            return view('servico.index', ['servicos'=>$servicos,'invalid'=>'', 'mes'=>$mes]);
+    }
+        }
+    }
 }

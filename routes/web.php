@@ -26,3 +26,4 @@ Route::resource('marcacao','App\Http\Controllers\MarcacaoController')->middlewar
 Route::resource('servico','App\Http\Controllers\ServicoController')->middleware('auth');
 Route::patch('servico/{servico}/adicionar', 'App\Http\Controllers\ServicoController@adicionar')->name('servico.adicionar')->middleware('auth');
 Route::patch('lucro/{lucro}/fechar', 'App\Http\Controllers\LucroController@fechar')->name('lucro.fechar')->middleware('auth');
+Route::post('servico/pesquisar', 'App\Http\Controllers\ServicoController@pesquisar')->name('servico.pesquisar');
