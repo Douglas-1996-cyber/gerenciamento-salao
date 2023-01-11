@@ -6,24 +6,25 @@
         <div class="col-lg-10">
            <div class="card">
                 <div class="card-header">Lista de serviços</div>
-                   <form  method="post" action=" {{ route('servico.pesquisar')}}">   
+            <form id="form_pesquisar" method="post" action=" {{ route('servico.pesquisar')}}">   
                              @csrf
                <div class="card-header">
                     <div class="row">
                         <div class="col-6">
                           <div class="float-end input-group mb-2 float-start">
-                           <select name='mes' class="form-select">
-                                   <option selected>Mês</option>
-                                    @foreach($mes as $key=>$valor)
-                                        <option value="{{ $valor}}">{{$key}}</option>
-                                    @endforeach
+                                <select name='mes' class="form-select">
+                                        <option selected>Mês</option>
+                                            @foreach($mes as $key=>$valor)
+                                                <option value="{{ $valor}}">{{$key}}</option>
+                                            @endforeach
                                 </select>
-                                   <input type="number" name="ano" class="form-control" placeholder="Ano" >
+                                <input type="number" name="ano" class="form-control" placeholder="Ano" >
                               <button class="btn btn-outline-secondary " type="submit" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
-                            </button>      
+                            </button>    
+                            </div>  
                          </div>  
                                
                     </div>
