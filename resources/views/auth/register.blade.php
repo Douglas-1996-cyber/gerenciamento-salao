@@ -36,7 +36,7 @@
             </div>
     </form>
             <div class="mais">
-                Já possue cadastro? <a href="{{ route('login') }}">Login</a>
+                Já possue cadastro?Realize o seu <a href="{{ route('login') }}">Login</a>
             </div>
  </div>
 @endsection
