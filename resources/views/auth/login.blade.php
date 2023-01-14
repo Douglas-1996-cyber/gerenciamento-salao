@@ -32,7 +32,7 @@
         </div>
         </form>
         <div class="mais">
-        É novo por aqui?  <a href="{{ route('register') }}">Cadastre-se</a>
+        <p>É novo por aqui? <a href="{{ route('register') }}">Cadastre-se</a></p>
         </div>
     </div>
 @endsection
