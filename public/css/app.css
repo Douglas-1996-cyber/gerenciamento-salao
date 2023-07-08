@@ -9442,7 +9442,7 @@ margin-left: 5px;
 
 
 }
-
+@media screen and (max-width:900px) {
   .inicial{
     background-color: aliceblue;
   } 
@@ -9501,10 +9501,11 @@ margin-left: 5px;
       .formulario #labelNome{
         font-size: 15px; 
       }
-
+}
 
   
 
+@media screen and (max-width:1300px) and (orientation:landscape){
 
   .blocoLogin{
     width: 100%;
@@ -9552,6 +9553,7 @@ margin-left: 5px;
   }
 
    
+}
 
 
 
