@@ -4,8 +4,8 @@
 <title>Login</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-<div class="inicial">
+<body class="cor-azul">
+<div class="conteudo">
  @yield('content')
 </div>
 </body>

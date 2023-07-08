@@ -9274,29 +9274,21 @@ h3 {
     border-color: #dee2e6;
   }
 }
-
-
-.inicial{
-  background-color: #1d68a7;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  border:none;
-  
+.cor-azul{
+  margin:0;
+  padding:0;
+  clear:none;
+  background-color:#1d68a7
 }
-.blocoLogin{
-  display:flex;
-  flex-direction:column;
-  width: 25%;
-  height: 40%;
-  position: absolute;
-  top: 10%;
-  left: 40%;
+
+.conteudo {
+  top: 0%;
+  left: 0%;
   border-radius: 10px;
-  border:none;
-}
-.titulo{
+  padding: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+ }
+ .titulo{
   font-size: 30px;
   font-weight: bold;
   text-align: center;
@@ -9304,16 +9296,7 @@ h3 {
   margin-top: 10px;
 }
 
-.conteudo {
- width: 100%;
- height: 100%;
- position: absolute;
- top: 0%;
- left: 0%;
- border-radius: 10px;
- background-color: aliceblue;
- padding: 2px;
-}
+
 
 .botao{
   font-size: 1vw;
@@ -9380,16 +9363,30 @@ color: #1d68a7;
 font-weight: bold;
 margin-left: 5px;
 }
+.blocoLogin{
+  display:flex;
+  flex-direction:column;
+  width: 25%;
+  height: 500px;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  border-radius: 10px;
+  border:none;
+  background-color: aliceblue;
+  box-sizing:border-box;
+}
+
 .blocoCadastro{
   display:flex;
   flex-direction:column;
   width: 40%;
-  height: 70%;
+  height:600px;
   position: absolute;
   top: 10%;
   left: 30%;
   border-radius: 10px;
-  background-color: #1d68a7;
+  background-color: aliceblue;
   border:none;
 }
 
@@ -9424,6 +9421,26 @@ margin-left: 5px;
   left:25%;
 }
 
+.erro{
+  color: red;
+  position: fixed;
+  top:10%;
+  font-size: 15px;
+  background-color: aliceblue;
+  height: 10%;
+  box-shadow: 1px 1px 20px 0px black;
+  border-radius:10px;
+  width: 50%;
+  padding: 5px;
+}
+.alert-danger{
+  position: absolute;
+  bottom:30%; 
+  left:0%;
+  width: 100%;
+
+
+}
 @media screen and (max-width:900px) {
   .inicial{
     background-color: aliceblue;
@@ -9438,7 +9455,7 @@ margin-left: 5px;
     border-radius: 0px;
   }
   .botao{
-    font-size: 5vw;
+    font-size: 2vh;
     }
     .blocoCadastro{
       width: 100%;
@@ -9452,6 +9469,36 @@ margin-left: 5px;
     }
     .mais a{
       margin-left: 2px;
+      }
+      .alert-danger{
+        top:70%; 
+        left:0%;
+        height:10%;
+        text-align: center;
+      }
+
+      .formulario #labelEmail{
+        font-size: 15px;
+
+      
+      }
+      
+      .formulario #labelSenha{
+        font-size: 15px; 
+      }
+      .formulario #labelEmailCadastro{
+        font-size: 15px; 
+      
+      }
+      .formulario #labelSenhaCadastro{
+        font-size: 15px; 
+      }
+      
+      .formulario #labelConfirme{
+        font-size: 15px; 
+      }
+      .formulario #labelNome{
+        font-size: 15px; 
       }
 }
 
@@ -9469,22 +9516,20 @@ margin-left: 5px;
   }
   .botao{
     font-size: 4vh;
-    margin-top: 4px;
+    margin-top: 10px;
     }
     .blocoCadastro{
       width: 100%;
-      height: 100%;
+      height: 600px;
       top: 0%;
       left: 0%;
       border-radius: 10px;
       border-radius: 0px;
       background-color: aliceblue;
       border:none;
+      overflow: auto;
     }
  
-    .titulo{
-     display: none;
-    }
     .formulario input{
       font-size: 3vh;
       }
@@ -9499,9 +9544,18 @@ margin-left: 5px;
   .formulario label{
     font-size: 16px; 
   }
+  .alert-danger{
+    top:80%; 
+    left:0%;
+    height:10%;
+
+  }
 
    
 }
+
+
+
 
  /*
 @media (min-width:412px) and (orientation: landscape)
